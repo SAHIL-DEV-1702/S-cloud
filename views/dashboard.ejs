@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drive Clone - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body
+    class="min-h-screen bg-gradient-to-br from-blue-100 via-indigo-200 to-purple-300"
+  >
+    <!-- NAVBAR -->
+    <nav
+      class="w-full p-4 bg-white/40 backdrop-blur-md shadow-lg flex justify-between items-center"
+    >
+      <h1 class="text-2xl font-bold text-indigo-700">My Drive</h1>
+
+      <form action="/dashboard/logout" method="POST">
+        <button
+          class="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-xl shadow transition transform hover:scale-105"
+        >
+          Logout
+        </button>
+      </form>
+    </nav>
+
+    <!-- UPLOAD SECTION -->
+    <div class="flex justify-center items-center mt-10">
+      <div
+        class="bg-white/80 backdrop-blur-lg shadow-2xl rounded-2xl p-10 w-full max-w-md text-center"
+      >
+        <h2 class="text-2xl font-bold text-indigo-600 mb-4">Upload File</h2>
+
+        <form
+          action="/dashboard/upload"
+          method="POST"
+          enctype="multipart/form-data"
+          class="space-y-4"
+        >
+          <input
+            type="file"
+            name="file"
+            class="block w-full text-gray-700 border border-gray-300 rounded-xl p-2 bg-gray-50"
+          />
+
+          <button
+            class="w-full bg-indigo-600 text-white font-semibold py-2 rounded-xl shadow-md hover:bg-indigo-700 transition transform hover:scale-[1.02]"
+          >
+            Upload
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- FILE LIST SECTION -->
+    <div
+      class="max-w-3xl mx-auto mt-12 bg-white/80 backdrop-blur-lg p-8 rounded-2xl shadow-2xl"
+    >
+      <h2 class="text-2xl font-bold text-indigo-700 mb-4 text-center">
+        Your Files
+      </h2>
+
+      <% if (!files || files.length === 0) { %>
+      <!-- NO FILES -->
+      <p class="text-center text-gray-600 text-lg">
+        You haven't uploaded any files yet.
+      </p>
+
+      <% } else { %>
+      <!-- FILES EXIST -->
+      <ul class="space-y-4">
+        <% files.forEach(file => { %>
+        <li
+          class="flex justify-between items-center bg-white shadow rounded-xl p-4 border"
+        >
+          <div>
+            <p class="font-semibold text-black-800"><%= file.orignalname%></p>
+          </div>
+
+          <div class="flex space-x-3">
+            <a
+              href="/dashboard/view/<%=file.cloudinaryPublicId %>"
+              class="px-3 py-1 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600"
+            >
+              View
+            </a>
+
+            <a
+              href="/dashboard/download/<%=file.cloudinaryPublicId  %>"
+              class="px-3 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600"
+            >
+              Download
+            </a>
+
+            <form
+              action="/dashboard/delete/<%=file.cloudinaryPublicId %>"
+              method="post"
+            >
+              <button
+                class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600"
+              >
+                Delete
+              </button>
+            </form>
+          </div>
+        </li>
+        <% }) %>
+      </ul>
+      <% } %>
+    </div>
+  </body>
+</html>
