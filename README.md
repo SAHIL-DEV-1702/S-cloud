@@ -23,13 +23,13 @@ This is a **cloud-based file management system** built using **Node.js** and **E
 ## Screenshots
 
 ### 📌 Dashboard  
-![Dashboard](images/Screenshot%202025-11-13%20002747.png)
+![Dashboard](images/Screenshot%202025-11-22%20002756.png)
 
 ### 📌 Login Page  
 ![Login Page](images/Screenshot%202025-11-22%20002730.png)
 
 ### 📌 Register Page  
-![Register Page](images/Screenshot%202025-11-22%20002756.png)
+![Register Page](images/Screenshot%202025-11-13%20002747.png  )
 
 
 ## Installation
