@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drive Clone - Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-indigo-200 to-purple-300"
+  >
+    <div
+      class="bg-white/80 backdrop-blur-lg shadow-2xl rounded-2xl p-8 w-full max-w-md"
+    >
+      <h1 class="text-3xl font-bold text-center text-indigo-600 mb-6">
+        Drive Clone
+      </h1>
+
+      <!-- Register Form -->
+      <form action="/register" method="POST" class="space-y-5">
+        <div>
+          <label for="username" class="block text-gray-700 font-semibold mb-2">
+            Username
+          </label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block text-gray-700 font-semibold mb-2">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="password" class="block text-gray-700 font-semibold mb-2">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            required
+          />
+        </div>
+
+        <div class="pt-4">
+          <input
+            type="submit"
+            value="Register"
+            class="w-full bg-indigo-600 text-white font-semibold py-2 rounded-xl shadow-md hover:bg-indigo-700 transition transform hover:scale-[1.02]"
+          />
+        </div>
+      </form>
+
+      <!-- Link to Login -->
+      <p class="text-center text-sm text-gray-600 mt-6">
+        Already have an account?
+        <a href="/login" class="text-indigo-500 hover:underline font-medium">
+          Login
+        </a>
+      </p>
+
+      <% if (typeof error !== 'undefined') { %>
+      <p class="text-red-600 text-center mt-4"><%= error %></p>
+      <% } %>
+    </div>
+  </body>
+</html>

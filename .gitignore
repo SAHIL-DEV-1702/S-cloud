@@ -1,0 +1,39 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+pids/
+*.pid
+*.seed
+
+# Build / output
+dist/
+build/
+coverage/
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Optional: IDE / OS specific
+*.swp
+*.swo
+
+# EJS / template caches (if you generate caches)
+tmp/
+cache/
