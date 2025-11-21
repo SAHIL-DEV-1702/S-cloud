@@ -28,7 +28,7 @@ images/Screenshot 2025-11-13 002747.png
 images/Screenshot 2025-11-22 002730.png
 
 ### 📌 Register Page  
-![Register Page](/mnt/data/Screenshot 2025-11-13 002747.png)
+images/Screenshot 2025-11-22 002756.png
 
 
 
