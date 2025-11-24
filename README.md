@@ -19,6 +19,18 @@ This is a **cloud-based file management system** built using **Node.js** and **E
 - **Validation:** express-validator, validator
 - **Environment Management:** dotenv
 - **Cookie Management:** cookie-parser
+- 
+## Screenshots
+
+### 📌 Dashboard  
+![Dashboard](images/Screenshot%202025-11-22%20002756.png)
+
+### 📌 Login Page  
+![Login Page](images/Screenshot%202025-11-22%20002730.png)
+
+### 📌 Register Page  
+![Register Page](images/Screenshot%202025-11-13%20002747.png  )
+
 
 ## Installation
 1. Clone the repository:
