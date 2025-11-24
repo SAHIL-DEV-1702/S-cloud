@@ -87,13 +87,9 @@ router.get('/view/:cloudinaryPublicId', auth, async (req, res) => {
 
         const response = await fetch(userUrl)
 
-        const buffer = await response.arrayBuffer()
+        res.redirect(userUrl)
 
-        res.setHeader("Content-Type", "application/pdf");
 
-        res.setHeader("Content-Disposition", "inline");
-
-        res.send(Buffer.from(buffer));
 
     } catch (error) {
         res.status(401).send('error to view', error)
@@ -103,25 +99,28 @@ router.get('/view/:cloudinaryPublicId', auth, async (req, res) => {
 
 router.get('/download/:cloudinaryPublicId', auth, async (req, res) => {
     try {
+        const file = await fileModel.findOne({
+            cloudinaryPublicId: req.params.cloudinaryPublicId
+        });
 
-        const user = await fileModel.findOne({ cloudinaryPublicId: req.params.cloudinaryPublicId })
+        if (!file) return res.status(404).send("File not found");
 
-        const url = user.cloudinarySecureUrl
+        const fileName = file.filename || "document.pdf";
 
-        const response = await fetch(url);
+        // Cloudinary RAW download URL
+        const downloadUrl = cloudinary.url(file.cloudinaryPublicId, {
+            resource_type: "raw",
+            flags: `attachment`,
+            filename_override: fileName
+        });
 
-        const buffer = await response.arrayBuffer()
-
-        res.setHeader("Content-Type", "application/pdf")
-        res.setHeader("Content-Disposition", `attachment ; filename= ${user.filename}`)
-
-        res.send(Buffer.from(buffer));
-
+        return res.redirect(downloadUrl);
 
     } catch (error) {
-        res.status(401).send("downloading error ", error)
+        res.status(500).send("Download error");
     }
-})
+});
+
 
 router.post('/logout', auth, (req, res) => {
 
